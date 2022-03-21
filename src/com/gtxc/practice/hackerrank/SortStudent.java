@@ -1,0 +1,68 @@
+package com.gtxc.practice.hackerrank;
+
+/*
+    Created by gt at 1:12 AM on Tuesday, February 15, 2022.
+    Project: practice, Package: com.gtxc.practice.hackerrank.
+*/
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Student{
+    private int id;
+    private String fname;
+    private double cgpa;
+    public Student(int id, String fname, double cgpa) {
+        super();
+        this.id = id;
+        this.fname = fname;
+        this.cgpa = cgpa;
+    }
+    public int getId() {
+        return id;
+    }
+    public String getFname() {
+        return fname;
+    }
+    public double getCgpa() {
+        return cgpa;
+    }
+}
+
+public class SortStudent {
+
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        int testCases = Integer.parseInt(in.nextLine());
+
+        List<Student> studentList = new ArrayList<Student>();
+        while (testCases > 0) {
+            int id = in.nextInt();
+            String fname = in.next();
+            double cgpa = in.nextDouble();
+
+            Student st = new Student(id, fname, cgpa);
+            studentList.add(st);
+
+            testCases--;
+        }
+        in.close();
+
+        studentList.sort((s1, s2) -> {
+            if (s1.getCgpa() == s2.getCgpa()) {
+                if (s1.getFname().equals(s2.getFname())) {
+                    return s1.getId() - s2.getId();
+                } else {
+                    return s1.getFname().compareTo(s2.getFname());
+                }
+            } else {
+                return String.valueOf(s2.getCgpa()).compareTo(String.valueOf(s1.getCgpa()));
+            }
+        });
+
+        for(Student st: studentList){
+            System.out.println(st.getFname());
+        }
+    }
+}
