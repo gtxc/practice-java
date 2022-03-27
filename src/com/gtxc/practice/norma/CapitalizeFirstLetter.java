@@ -5,6 +5,9 @@ package com.gtxc.practice.norma;
     Project: practice, Package: com.gtxc.practice.norma.
 */
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class CapitalizeFirstLetter {
     public static void main(String[] args) {
         System.out.println(capitalizeFirstLetter("gt orc elf GG g"));
@@ -12,11 +15,8 @@ public class CapitalizeFirstLetter {
     }
 
     static String capitalizeFirstLetter(String str) {
-        String[] strArr = str.split(" ");
-        StringBuilder capitalized = new StringBuilder();
-        for (String s : strArr) {
-            capitalized.append(Character.toUpperCase(s.charAt(0))).append(s.substring(1)).append(" ");
-        }
-        return capitalized.substring(0, str.length());
+        return Arrays.stream(str.split(" "))
+                .map(s -> Character.toUpperCase(s.charAt(0)) + s.substring(1))
+                .collect(Collectors.joining(" "));
     }
 }
