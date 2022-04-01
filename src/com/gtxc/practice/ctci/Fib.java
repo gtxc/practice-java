@@ -1,4 +1,4 @@
-package com.gtxc.practice;
+package com.gtxc.practice.ctci;
 
 /*
     Created by gt at 1:22 PM on Friday, April 01, 2022.
